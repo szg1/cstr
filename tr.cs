@@ -1,4 +1,5 @@
 using System.Runtime.InteropServices;
+//don't forget to add <AllowUnsafeBlocks>true</AllowUnsafeBlocks> to csproj
 unsafe int ri(int min, int max)
 {
     IntPtr allocatedMemory = Marshal.AllocHGlobal(sizeof(int));
