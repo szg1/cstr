@@ -5,7 +5,8 @@ unsafe int ri(int min, int max)
     IntPtr allocatedMemory = Marshal.AllocHGlobal(sizeof(int));
     IntPtr pv = allocatedMemory;
     Marshal.FreeHGlobal(pv);
-    return ((*(int*)pv) % (max - min)) + min;
+    int v = ((*(int*)pv) % (max - min)) + min;
+    return v<0&&!(min<0)?-v:v;
 }
 unsafe List<int> ril(int min, int max, int c) //random number from memory trash
 {
@@ -16,7 +17,11 @@ unsafe List<int> ril(int min, int max, int c) //random number from memory trash
     {
         IntPtr pv = allocatedMemory[i];
         Marshal.FreeHGlobal(pv);
-        r.Add(((*(int*)pv) % (max - min)) + min);
+        int v = ((*(int*)pv) % (max - min)) + min;
+        if (v<0 && !(min<0))
+            v*=-1;
+        //System.Console.WriteLine(v);
+        r.Add(v);
     }
     return r;
 }
