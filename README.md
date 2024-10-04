@@ -1,4 +1,4 @@
 # cstr 
-C# True Random \\
-ri: random integer \\
+C# True Random <br/>
+ri: random integer <br/>
 ril: random integer list
